@@ -6,3 +6,4 @@
 Игра: "Калькулятор"                 - https://asciinema.org/a/PjRfOpBB3tySlJzLHzjpnUcsu
 Игра "НОД"                          - https://asciinema.org/a/wIqX64sTC6nLsw8J5C0kWnuez
 Игра "Арифметическая прогрессия"    - https://asciinema.org/a/SKQjbzzQcfLqybQh2XfzGJOj8
+Игра "Простое ли число?"            - https://asciinema.org/a/ppbTAD4p3DsXJLiIPNOBX4CYF
