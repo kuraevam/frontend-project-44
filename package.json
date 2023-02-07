@@ -7,8 +7,7 @@
   "bin": {
     "brain-games": "bin/brain-games.js"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kuraevam/frontend-project-44.git"
@@ -18,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/kuraevam/frontend-project-44/issues"
   },
-  "homepage": "https://github.com/kuraevam/frontend-project-44#readme"
+  "homepage": "https://github.com/kuraevam/frontend-project-44#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
