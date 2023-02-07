@@ -1,9 +1,14 @@
 import readlineSync from 'readline-sync';
 
 export default (title, fetchData) => {
+  console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${name}!`);
-  console.log('');
+
+  if (!title || !fetchData) {
+    return;
+  }
+
   console.log(title);
   for (let i = 0; i < 3; i += 1) {
     const data = fetchData();
