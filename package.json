@@ -1,10 +1,13 @@
 {
   "name": "@hexlet/code",
+  "type": "module",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/kuraevam/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/kuraevam/frontend-project-44/actions)",
   "main": "index.js",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
   "scripts": {
-    "start": "node bin/brain-games.js "
   },
   "repository": {
     "type": "git",
