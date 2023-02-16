@@ -1,6 +1,9 @@
-import game, { getRandomInt } from '../index.js';
+import game from '../index.js';
+import getRandomInt from '../utils.js';
 
-function hasPrime(n) {
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+function isPrime(n) {
   if (n === 1) {
     return false;
   }
@@ -16,12 +19,10 @@ function hasPrime(n) {
 }
 
 function fetchAnswer(question) {
-  return hasPrime(question) ? 'yes' : 'no';
+  return isPrime(question) ? 'yes' : 'no';
 }
 
-const title = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-function fetchData() {
+function fetchGameOptions() {
   const question = getRandomInt(1, 100);
   const answer = fetchAnswer(question);
 
@@ -31,6 +32,8 @@ function fetchData() {
   };
 }
 
-export default (roundsCount) => {
-  game(title, fetchData, roundsCount);
+export default {
+  run: () => {
+    game(description, fetchGameOptions);
+  },
 };

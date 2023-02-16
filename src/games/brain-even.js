@@ -1,12 +1,15 @@
-import game, { getRandomInt } from '../index.js';
+import game from '../index.js';
+import getRandomInt from '../utils.js';
 
-const title = 'Answer "yes" if the number is even, otherwise answer "no".';
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const isEven = (question) => question % 2 === 0;
 
 function fetchAnswer(question) {
-  return question % 2 === 0 ? 'yes' : 'no';
+  return isEven(question) ? 'yes' : 'no';
 }
 
-function fetchData() {
+function fetchGameOptions() {
   const question = getRandomInt(1, 100);
   const answer = fetchAnswer(question);
 
@@ -16,6 +19,8 @@ function fetchData() {
   };
 }
 
-export default (roundsCount) => {
-  game(title, fetchData, roundsCount);
+export default {
+  run: () => {
+    game(description, fetchGameOptions);
+  },
 };

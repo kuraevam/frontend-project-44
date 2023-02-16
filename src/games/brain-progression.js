@@ -1,23 +1,26 @@
-import game, { getRandomInt } from '../index.js';
+import game from '../index.js';
+import getRandomInt from '../utils.js';
 
-const title = 'What number is missing in the progression?';
+const description = 'What number is missing in the progression?';
 
-function fetchNumbers(number, numberStep) {
+function fetchNumbers(number, numberStep, numbersCount) {
   let num = number;
-  return (new Array(10)).fill(0).map(() => {
+  return (new Array(numbersCount)).fill(0).map(() => {
     num += numberStep;
     return num;
   });
 }
 
-function fetchData() {
+function fetchGameOptions() {
   const number = getRandomInt(1, 100);
   const numberStep = getRandomInt(1, 50);
+  const numbersCount = 10;
 
-  const numbers = fetchNumbers(number, numberStep);
+  const numbers = fetchNumbers(number, numberStep, numbersCount);
 
-  const answer = numbers[5].toString();
-  numbers[5] = '..';
+  const position = getRandomInt(0, numbersCount - 1);
+  const answer = numbers[position].toString();
+  numbers[position] = '..';
   const question = numbers.join(' ');
 
   return {
@@ -26,6 +29,8 @@ function fetchData() {
   };
 }
 
-export default (roundsCount) => {
-  game(title, fetchData, roundsCount);
+export default {
+  run: () => {
+    game(description, fetchGameOptions);
+  },
 };

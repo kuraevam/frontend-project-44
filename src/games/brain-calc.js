@@ -1,15 +1,17 @@
-import game, { getRandomInt } from '../index.js';
+import game from '../index.js';
+import getRandomInt from '../utils.js';
+
+const description = 'What is the result of the expression?';
 
 const operations = ['-', '+', '*'];
-
-const title = 'What is the result of the expression?';
+const defaultOperation = operations[0];
 
 function fetchQuestion(operation, numberOne, numberSecond) {
   return `${numberOne} ${operation} ${numberSecond}`;
 }
 
 function fetchAnswer(operation, numberOne, numberSecond) {
-  let answer;
+  let answer = null;
   if (operation === '-') {
     answer = numberOne - numberSecond;
   }
@@ -22,24 +24,29 @@ function fetchAnswer(operation, numberOne, numberSecond) {
     answer = numberOne * numberSecond;
   }
 
-  return answer !== undefined ? answer.toString() : '';
+  if (answer === null || Number.isNaN(answer)) {
+    throw Error('Answer cannot be generated');
+  }
+
+  return answer.toString();
 }
 
-function fetchData() {
+function fetchGameOptions() {
   const numberOne = getRandomInt(1, 10);
   const numberSecond = getRandomInt(1, 10);
-  const indexOperations = getRandomInt(0, 2);
-  const operation = operations[indexOperations];
+  const indexOperations = getRandomInt(0, operations.length - 1);
+  const operation = operations[indexOperations] || defaultOperation;
 
   const question = fetchQuestion(operation, numberOne, numberSecond);
   const answer = fetchAnswer(operation, numberOne, numberSecond);
-
   return {
     question,
     answer,
   };
 }
 
-export default (roundsCount) => {
-  game(title, fetchData, roundsCount);
+export default {
+  run: () => {
+    game(description, fetchGameOptions);
+  },
 };
